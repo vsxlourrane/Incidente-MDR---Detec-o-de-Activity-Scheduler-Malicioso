@@ -1,0 +1,7 @@
+Tipo,Valor,Descricao,Confianca,Fase
+IP,192.168.1.10,Servidor C2 Interno,Alta,Command and Control
+URL,http://192.168.1.10/payload.exe,Download do payload,Alta,Delivery
+Hostname,UpdaterService,Nome da tarefa maliciosa,Alta,Persistence
+Hash,4d2c8f1a3b5e7d9c0a2b4c6e8f0a1b2c3d4e5f6a,Hash do payload.exe,Média,Execution
+Processo,payload.exe,Executável malicioso,Alta,Execution
+Usuario,JDOE,Conta comprometida,Alta,Lateral Movement

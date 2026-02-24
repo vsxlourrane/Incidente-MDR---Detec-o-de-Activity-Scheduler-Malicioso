@@ -1,0 +1,18 @@
+[
+  {
+    "TimeGenerated": "2026-02-23T14:23:25Z",
+    "Computer": "SRV-APP-01",
+    "ProcessName": "payload.exe",
+    "ParentProcess": "powershell.exe",
+    "CommandLine": "C:\\Users\\Public\\payload.exe -silent",
+    "User": "SYSTEM",
+    "Hash": "4d2c8f1a3b5e7d9c0a2b4c6e8f0a1b2c3d4e5f6a",
+    "NetworkConnections": [
+      {
+        "DestinationIP": "192.168.1.10",
+        "DestinationPort": 443,
+        "Protocol": "TCP"
+      }
+    ]
+  }
+]

